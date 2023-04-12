@@ -6,11 +6,8 @@ const app = express()
 
 import mongoose from 'mongoose'
 
-//Localhost
-//const DATABASE_URL = "mongodb://0.0.0.0/job-portal-backend"
-// Production
-const DATABASE_URL = "mongodb+srv://saurabh1103:Saurabh12345@cluster0.zeoh1iv.mongodb.net/job-portal?retryWrites=true&w=majority"
-mongoose.connect(DATABASE_URL);
+
+mongoose.connect(process.env.DATABASE_URL);
 const db = mongoose.connection
 db.on('error', (error) => console.log(error))
 db.once('open', () => console.log('Connected to Database'))
